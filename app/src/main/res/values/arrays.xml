@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string-array name="roles">
+    <item>Pilih Role</item>
+    <item>Admin</item>
+    <item>Kasir</item>
+    <item>Manager</item>
+</string-array>
+    <string-array name="tipe">
+        <item>Pilih tipe item</item>
+        <item>Makanan</item>
+        <item>Minuman</item>
+    </string-array>
+</resources>

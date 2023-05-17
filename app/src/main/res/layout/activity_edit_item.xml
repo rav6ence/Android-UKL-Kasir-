@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditItemActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/namaProduk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama produk..."
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/hargaProduk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Harga produk..."
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:inputType="number"/>
+    <Spinner
+        android:id="@+id/pilihTipe"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/tipe" />
+
+    <Button
+        android:id="@+id/simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_gravity="center"
+        android:text="simpan"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

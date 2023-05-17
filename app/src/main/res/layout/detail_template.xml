@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:id="@+id/namaMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Nasi Goreng"
+        android:textColor="@color/black"
+        android:textSize="22sp"/>
+    <TextView
+        android:id="@+id/hargaMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Rp.999999"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

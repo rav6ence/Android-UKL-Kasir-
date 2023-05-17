@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/register_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_below="@id/register_text"
+        android:background="#E8E8E8"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:hint=" Name"/>
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_below="@id/editName"
+        android:background="#E8E8E8"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:hint=" Email"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_below="@id/editEmail"
+        android:background="#E8E8E8"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:hint=" Password"
+        android:inputType="textPassword"/>
+
+    <Spinner
+        android:id="@+id/spinnerRole"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_below="@id/editPassword"
+        android:entries="@array/roles"
+        android:background="#E8E8E8"/>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:text="save"
+        android:layout_below="@id/spinnerRole"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>
