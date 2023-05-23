@@ -87,6 +87,9 @@ class MainActivity2 : AppCompatActivity() {
         recyclerMinuman.adapter = adapterMinuman
         recyclerMinuman.layoutManager = LinearLayoutManager(this)
 
+        swipeToGesture(recyclerMakanan)
+        swipeToGesture(recyclerMinuman)
+
         nama = intent.getStringExtra("name")!!
         role = intent.getStringExtra("role")!!
         id_user = intent.getIntExtra("id_user", 0)
@@ -134,5 +137,41 @@ class MainActivity2 : AppCompatActivity() {
         listMinuman.addAll(db.cafeDao().getMenuFilterJenis("Minuman"))
         adapterMakanan.notifyDataSetChanged()
         adapterMinuman.notifyDataSetChanged()
+    }
+    private fun swipeToGesture(itemRv: RecyclerView){
+        val swipeGesture = object : SwipeGesture(this){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val actionBtnTapped = false
+
+                try{
+                    when(direction){
+                        ItemTouchHelper.LEFT -> {
+                            var adapter: ItemAdapter = itemRv.adapter as ItemAdapter
+                            db.cafeDao().deleteMenu(adapter.getItem(position))
+                            adapter.notifyItemRemoved(position)
+                            val intent = intent
+                            finish()
+                            startActivity(intent)
+                        }
+                        ItemTouchHelper.RIGHT -> {
+                            val moveIntent = Intent(this@MainActivity2, EditItemActivity::class.java)
+                            var adapter: ItemAdapter = itemRv.adapter as ItemAdapter
+                            var menu = adapter.getItem(position)
+                            moveIntent.putExtra("ID", menu.id_menu)
+                            moveIntent.putExtra("nama_menu", menu.nama_menu)
+                            moveIntent.putExtra("harga_menu", menu.harga)
+                            moveIntent.putExtra("jenis", menu.jenis)
+                            startActivity(moveIntent)
+                        }
+                    }
+                }
+                catch (e: Exception){
+                    Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        val touchHelper = ItemTouchHelper(swipeGesture)
+        touchHelper.attachToRecyclerView(itemRv)
     }
 }
