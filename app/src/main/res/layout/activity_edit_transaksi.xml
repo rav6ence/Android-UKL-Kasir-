@@ -19,7 +19,8 @@
         android:id="@+id/namaPelanggan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"/>
+        android:layout_marginHorizontal="16dp"
+        android:inputType="text"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,13 +29,16 @@
         android:text="Nomor Meja"
         android:textColor="@color/black"
         android:textSize="20sp"/>
-    <Spinner
-        android:id="@+id/spinnerMeja"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+    <TextView
+        android:id="@+id/nomorMeja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
-        android:background="#E8E8E8"/>
+        android:text="Meja 1"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
     <CheckBox
         android:id="@+id/dibayar"
         android:layout_width="wrap_content"
