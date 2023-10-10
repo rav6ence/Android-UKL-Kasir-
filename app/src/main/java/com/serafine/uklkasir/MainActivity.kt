@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -31,10 +32,20 @@ class MainActivity : AppCompatActivity() {
                     val name = list[0].nama
                     val role = list[0].role
                     val id_user = list[0].id_user
-                    moveIntent.putExtra("name", name)
-                    moveIntent.putExtra("role", role)
-                    moveIntent.putExtra("id_user", id_user)
-                    startActivity(moveIntent)
+                    if(role == "Manager"){
+                        val moveIntent = Intent(this@MainActivity, ListTransaksiActivity::class.java)
+                        moveIntent.putExtra("name", name)
+                        moveIntent.putExtra("role", role)
+                        moveIntent.putExtra("id_user", id_user)
+                        startActivity(moveIntent)
+                    }
+                    else{
+                        val moveIntent = Intent(this@MainActivity, MainActivity2::class.java)
+                        moveIntent.putExtra("name", name)
+                        moveIntent.putExtra("role", role)
+                        moveIntent.putExtra("id_user", id_user)
+                        startActivity(moveIntent)
+                    }
                 }
                 else{
                     Toast.makeText(applicationContext, "User not found", Toast.LENGTH_SHORT).show()

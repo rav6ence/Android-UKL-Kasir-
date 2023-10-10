@@ -7,7 +7,7 @@ import com.serafine.uklkasir.database.CafeDatabase
 
 class EditTransaksiActivity : AppCompatActivity() {
     lateinit var inputNamaPelanggan: EditText
-    lateinit var spinnerMeja: Spinner
+    lateinit var nomorMeja: TextView
     lateinit var simpanButton: Button
     lateinit var dibayar: CheckBox
 
@@ -18,36 +18,38 @@ class EditTransaksiActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_transaksi)
 
         inputNamaPelanggan = findViewById(R.id.namaPelanggan)
-        spinnerMeja = findViewById(R.id.spinnerMeja)
+        nomorMeja = findViewById(R.id.nomorMeja)
         simpanButton = findViewById(R.id.simpan)
         dibayar = findViewById(R.id.dibayar)
 
         db = CafeDatabase.getInstance(applicationContext)
 
-        setDataSpinner()
         var id_transaksi: Int? = null
         id_transaksi = intent.getIntExtra("ID", 0)
+
+        inputNamaPelanggan.setText(db.cafeDao().getTransaksi(id_transaksi).nama_pelanggan)
+        nomorMeja.text = db.cafeDao().getMeja(db.cafeDao().getTransaksi(id_transaksi).id_meja).nomor_meja
 
         simpanButton.setOnClickListener{
             var status = "Belum Dibayar"
             if(dibayar.isChecked){
                 status = "Dibayar"
             }
+
             if(inputNamaPelanggan.text.toString().isNotEmpty()){
                 db.cafeDao().updateTransaksi(
                     inputNamaPelanggan.text.toString(),
-                    db.cafeDao().getIdMejaFromNama(spinnerMeja.selectedItem.toString()),
+                    db.cafeDao().getTransaksi(id_transaksi).id_meja,
                     status,
                     id_transaksi
                 )
+
+                if(dibayar.isChecked){
+                    val meja = db.cafeDao().getMeja(db.cafeDao().getTransaksi(id_transaksi).id_meja)
+                    db.cafeDao().updateMeja(meja.nomor_meja, meja.id_meja!!, false)
+                }
                 finish()
             }
         }
-    }
-
-    private fun setDataSpinner(){
-        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, db.cafeDao().getAllNamaMeja())
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerMeja.adapter = adapter
     }
 }

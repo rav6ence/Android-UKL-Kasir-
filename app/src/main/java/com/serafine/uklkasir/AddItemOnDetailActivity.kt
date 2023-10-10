@@ -39,6 +39,7 @@ class AddItemOnDetailActivity : AppCompatActivity() {
         checkoutButton = findViewById(R.id.checkOut)
 
         db = CafeDatabase.getInstance(applicationContext)
+        id_transaksi = intent.getIntExtra("id_transaksi", 0)
 
         adapterMakanan = ItemAdapter(listMakanan)
         adapterMakanan.onAddClick = {
@@ -82,6 +83,7 @@ class AddItemOnDetailActivity : AppCompatActivity() {
             moveIntent.putIntegerArrayListExtra("CART", listCart)
             moveIntent.putExtra("id_transaksi", id_transaksi)
             moveIntent.putExtra("addAgain", addAgain)
+            finish()
             startActivity(moveIntent)
         }
     }

@@ -68,6 +68,7 @@ class CartActivity : AppCompatActivity() {
                 listIdMenu.add(i.id_menu)
             }
             moveIntent.putIntegerArrayListExtra("list", listIdMenu)
+            finish()
             startActivity(moveIntent)
         }
     }

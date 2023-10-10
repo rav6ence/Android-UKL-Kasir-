@@ -13,6 +13,7 @@ import com.serafine.uklkasir.database.Transaksi
 class TransaksiAdapter (var items: List<Transaksi>): RecyclerView.Adapter<TransaksiAdapter.ViewHolder>(){
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var textNama: TextView
+        var textWaktu: TextView
         var textTanggal: TextView
         var textStatus: TextView
         var textMeja: TextView
@@ -20,6 +21,7 @@ class TransaksiAdapter (var items: List<Transaksi>): RecyclerView.Adapter<Transa
 
         init{
             textNama = view.findViewById(R.id.namaPelangganList)
+            textWaktu = view.findViewById(R.id.waktuList)
             textTanggal = view.findViewById(R.id.tglList)
             textStatus = view.findViewById(R.id.statusList)
             textMeja = view.findViewById(R.id.mejaList)
@@ -37,6 +39,7 @@ class TransaksiAdapter (var items: List<Transaksi>): RecyclerView.Adapter<Transa
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textNama.text = items[position].nama_pelanggan
+        holder.textWaktu.text = items[position].waktu_transaksi
         holder.textTanggal.text = items[position].tgl_transaksi
         holder.textStatus.text = items[position].status
         holder.textMeja.text = db.cafeDao().getMeja(items[position].id_meja).nomor_meja

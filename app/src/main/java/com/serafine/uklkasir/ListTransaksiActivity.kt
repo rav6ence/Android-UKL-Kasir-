@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ class ListTransaksiActivity : AppCompatActivity() {
     lateinit var db: CafeDatabase
 
     private var listTransaksi = arrayListOf<Transaksi>()
+    private lateinit var filterButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,12 @@ class ListTransaksiActivity : AppCompatActivity() {
 
         recycler = findViewById(R.id.recyclerTransaksi)
         db = CafeDatabase.getInstance(applicationContext)
+        filterButton = findViewById(R.id.filterdate)
+
+        filterButton.setOnClickListener {
+            val intent = Intent(this, FilterActivity::class.java)
+            startActivity(intent)
+        }
 
         recycler.layoutManager = LinearLayoutManager(this)
         adapter = TransaksiAdapter(listTransaksi)

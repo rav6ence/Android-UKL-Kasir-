@@ -25,7 +25,7 @@ class EditMejaActivity : AppCompatActivity() {
 
         simpanButton.setOnClickListener{
             if(inputNama.text.toString().isNotEmpty()){
-                db.cafeDao().updateMeja(inputNama.text.toString(), id)
+                db.cafeDao().updateMeja(inputNama.text.toString(), id, false)
                 finish()
             }
         }

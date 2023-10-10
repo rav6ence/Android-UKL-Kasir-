@@ -47,8 +47,8 @@ interface CafeDao {
     @Query("SELECT * FROM Menu WHERE id_menu = :Id")
     fun getMenu(Id: Int): Menu
 
-    @Query("UPDATE Meja SET nomor_meja = :namaMeja WHERE id_meja = :id")
-    fun updateMeja(namaMeja: String, id: Int)
+    @Query("UPDATE Meja SET nomor_meja = :namaMeja, used = :Used WHERE id_meja = :id")
+    fun updateMeja(namaMeja: String, id: Int, Used: Boolean)
 
     @Delete
     fun deleteMeja(meja: Meja)
@@ -68,6 +68,9 @@ interface CafeDao {
     @Delete
     fun deleteTransaksi(transaksi: Transaksi)
 
+    @Delete
+    fun deleteDetailTransaksi(detailTransaksi: DetailTransaksi)
+
     @Query("UPDATE Transaksi SET nama_pelanggan = :namaPelanggan, id_meja = :idMeja, status = :Status WHERE id_transaksi = :idTransaksi")
     fun updateTransaksi(namaPelanggan: String, idMeja: Int, Status: String, idTransaksi: Int)
 
@@ -76,4 +79,10 @@ interface CafeDao {
 
     @Query("SELECT * FROM Transaksi WHERE id_transaksi = :Id")
     fun getTransaksi(Id: Int): Transaksi
+
+    @Query("SELECT COUNT(id_detail_transaksi) as count, id_menu FROM DetailTransaksi GROUP BY id_menu")
+    fun getCountDetailTransaksi(): List<CountMenu>
+
+    @Query("SELECT COUNT(id_transaksi) as count, tgl_transaksi FROM Transaksi GROUP BY tgl_transaksi")
+    fun getCountTransaksi(): List<CountTransaksi>
 }

@@ -13,7 +13,7 @@ import androidx.room.RoomDatabase
         Transaksi::class,
         DetailTransaksi::class
     ],
-    version = 1
+    version = 2
 )
 
 abstract class CafeDatabase: RoomDatabase() {

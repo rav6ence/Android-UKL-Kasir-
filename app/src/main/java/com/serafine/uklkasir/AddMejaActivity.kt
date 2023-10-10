@@ -25,7 +25,7 @@ class AddMejaActivity : AppCompatActivity() {
 
         simpanButton.setOnClickListener{
             if(inputNama.text.toString().isNotEmpty()){
-                db.cafeDao().insertMeja(Meja(null, inputNama.text.toString()))
+                db.cafeDao().insertMeja(Meja(null, inputNama.text.toString(), false))
                 Toast.makeText(applicationContext, "Meja berhasil ditambahkan", Toast.LENGTH_SHORT).show()
                 finish()
             }
